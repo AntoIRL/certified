@@ -34,20 +34,20 @@ export default function Home() {
           <div className="w-full flex items-center justify-center">
             <div className="w-[400px] h-[536px] bg-[#272D37]/60 rounded-2xl flex flex-col p-6 sm:h-max">
               <Image
-                src="/images/mock.png"
+                src="/images/Starknet.png"
                 alt="mock"
                 height={352}
                 width={352}
                 layout="intrinsic"
               ></Image>
               <div className="">
-                <h1>Hamlet</h1>
+                <h1>Starknet</h1>
               </div>
             </div>
           </div>
         </section>
         <section className="max-w-[1240px] my-20 mx-auto  gap-2 font-body top-7 ">
-          <h2 className="sm:text-center md:mx-10">Featured Artist </h2>
+          <h2 className="sm:text-center md:mx-10">Available airdrop </h2>
           <div className="grid grid-cols-4 gap-3 sm:gap-y-8 md:grid-cols-2 sm:grid-cols-1 sm:p-12 md:mx-10">
             {mockartist.map((data) => (
               <div
@@ -61,16 +61,12 @@ export default function Home() {
                     layout="responsive"
                     className="w-full rounded-2xl h-[225px]"
                   />
-                  <img
-                    src={data.image}
-                    alt={data.name}
-                    layout="intrinsic"
-                    className="absolute -bottom-[40px] left-0 right-0 mx-auto h-[104px] w-[104px] bg-[#272D37] rounded-full"
-                  />
                 </div>
-                <div className="w-full text-center mt-8 font-bold">
+                <div className="w-full text-center font-bold">
                   <h3>{data.name}</h3>
-                  <p>Price: {data.price}</p>
+			  <button class="bg-[#1E50FF] rounded-full px-4 py-2 border-0 text-lg cursor-pointer transition duration-250 ease-in-out hover:scale-125 hover:drop-shadow-xl hover:shadow-sky-600 w-auto focus:scale-90">
+				  Valider
+			  </button>
                 </div>
               </div>
             ))}
