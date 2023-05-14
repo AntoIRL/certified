@@ -11,6 +11,7 @@
   "dependencies": {
     "@airgap/beacon-sdk": "^4.0.2",
     "@bundlr-network/client": "^0.11.1",
+    "@dipdup/tzkt-api": "^0.0.1",
     "@taquito/beacon-wallet": "^16.1.2",
     "bignumber.js": "^9.1.0",
     "dotenv": "^16.0.3",

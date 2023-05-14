@@ -1,40 +1,29 @@
 import Link from "next/link";
 import Image from 'next/image'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import ConnectWallet from '../components/ConnectWallet'
+import { TezosContext } from "../context/walletContext";
 
 const Header = () => {
-  const [hasScrolled, setHasScrolled] = useState(false);
-
   const [addr, setAddr] = useState("");
-
-  const changeNavbar = () => {
-    if (window.scrollY >= 20) {
-      setHasScrolled(true);
-    } else {
-      setHasScrolled(false);
-    }
-  };
-
+  const { wallet, setWallet} = useContext(TezosContext)
+  const [ walletHeader, setWalletHeader ] = useState("")
   useEffect(() => {
-    document.addEventListener("scroll", changeNavbar);
-  });
-
-  useEffect(() => {
-    const addr = localStorage.getItem("walletAddress");
-    setAddr(addr);
-    console.log(addr)
-  }, []);
+	const getAddress = async () => {
+      if (walletHeader !== "") {
+        const address = await wallet.getPKH();
+        console.log('Adresse du portefeuille:', address);
+	   setAddr(address)
+      }
+    };
+    getAddress();
+  }, [walletHeader]);
 
   return (
     <>
-      <section className="sticky top-0 z-[100] w-full px-2 py-2 sm:px-4 transition duration-250 ease-in-out left-[-100%]">
+      <section className="sticky top-0 z-[100] w-full px-2 py-2 sm:px-4 transition duration-250 ease-in-out left-[-100%] bg-black">
         <nav
-          className={
-            hasScrolled
-              ? `rounded-lg px-6 font-body flex items-center justify-between max-w-[1240px] my-2 mx-auto h-16 md:px-4 md:mx-5 backdrop-blur-sm bg-[#000000]/40 sm:px-1 ssm:p-1 transition duration-250 ease-in-out border border-solid border-sky-600`
-              : `rounded-lg px-6 font-body flex items-center justify-between max-w-[1440px] my-2 mx-auto h-16 md:px-4 md:mx-5 sm:px-1 ssm:p-1 transition duration-250 ease-in-out`
-          }
-        >
+          className="rounded-lg px-6 font-body flex items-center justify-between my-2 mx-auto h-16 md:px-4 md:mx-5 sm:px-1 ssm:p-1 transition duration-250 ease-in-out">
           <h2 className="ssm:text-[10px]">
             <Link href="/">
               <Image src="/logo.png" width='117px' height='42px' />
@@ -43,7 +32,7 @@ const Header = () => {
           <ul className="flex gap-3 items-center justify-center transition-all list-none sm:hidden">
           </ul>
           <p className="font-semibold text-xl text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600 sm:hidden">
-	  		{addr}
+	  		{addr == "" ? <ConnectWallet setWallet={setWalletHeader} /> : addr}
           </p>
         </nav>
       </section>
