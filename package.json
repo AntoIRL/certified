@@ -1,5 +1,5 @@
 {
-  "name": "Certified",
+  "name": "certified",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,10 +24,27 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "2.0.0",
+    "@taqueria/plugin-ligo": "^0.28.5",
     "autoprefixer": "^10.4.12",
     "eslint": "8.24.0",
     "eslint-config-next": "12.3.1",
     "postcss": "^8.4.17",
     "tailwindcss": "^3.1.8"
-  }
+  },
+  "description": "<img width=\"1600\" alt=\"credit\" src=\"https://user-images.githubusercontent.com/67114280/194313285-d2c41add-84ab-43e3-bc4e-4ed62ed215c1.png\">",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntoIRL/certified.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntoIRL/certified/issues"
+  },
+  "homepage": "https://github.com/AntoIRL/certified#readme"
 }

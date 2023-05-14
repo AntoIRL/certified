@@ -6,6 +6,7 @@ import { Header } from "../components";
 import { BeaconWallet } from '@taquito/beacon-wallet'
 import { TezosToolkit } from '@taquito/taquito'
 import { NetworkType } from '@airgap/beacon-types'
+import Mint from '../lib/mint'
 
 export default function Home() {
   const [Tezos, _] = useState(new TezosToolkit('https://api.ghost.tzstats.com')) 
@@ -28,7 +29,6 @@ export default function Home() {
 	  	  <h1 className="text-[85px] text-center">The label that sets your wallet apart</h1>
           </div>
           <div className="w-full flex flex-col items-center justify-center col-span-4">
-            <h2 className="sm:text-center md:mx-10 text-2xl">Featured project :</h2>
             <div className="bg-black rounded-2xl flex flex-col p-6 sm:h-max w-4/5">
               <Image
                 src="/images/Starknet.png"
@@ -43,13 +43,13 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="px-20 py-20  gap-2 font-body bg-[#2f3542] bg-cover">
+        <section className="px-20 py-20  gap-2 font-body bg-white bg-cover text-black">
           <h2 className="sm:text-center md:mx-10">Available airdrop :</h2>
           <div className="grid grid-cols-4 gap-3 sm:gap-y-8 md:grid-cols-2 sm:grid-cols-1 sm:p-12 md:mx-10">
             {mockartist.map((data) => (
               <div
                 key={data.id}
-                className="bg-[#272D37] flex flex-col justify-center items-center m-10 p-3 rounded-xl"
+                className="bg-[#272D37] flex flex-col justify-center items-center m-10 p-3 rounded-xl text-white"
               >
                 <div className="w-full relative">
                   <img
@@ -61,7 +61,7 @@ export default function Home() {
                 </div>
                 <div className="w-full text-center font-bold">
                   <h3>{data.name}</h3>
-			  <button class="bg-[#1E50FF] rounded-full px-4 py-2 border-0 text-lg cursor-pointer transition duration-250 ease-in-out hover:scale-125 hover:drop-shadow-xl hover:shadow-sky-600 w-auto focus:scale-90">
+			  <button class="bg-[#1E50FF] rounded-full px-4 py-2 border-0 text-lg cursor-pointer transition duration-250 ease-in-out hover:scale-125 hover:drop-shadow-xl hover:shadow-sky-600 w-auto focus:scale-90" onClick={() => Mint(wallet)}>
 				  Validate
 			  </button>
                 </div>
